@@ -2,7 +2,7 @@
 CKC212 Assignment 1: Java aquarium program using a Fish ADT, concrete fish classes and a Stack-based Aquarium.
 
 - **Course:** CKC212 Data Structures, School of Computer Sciences
-- **Name:** NAVITHA
+- **Name:** NAVITHA A/P MUNIANDY
 - **Language:** Java
 
 ## About
