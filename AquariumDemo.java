@@ -18,36 +18,65 @@ public class AquariumDemo {
         // Created the aquarium object that will hold the fish.
         Aquarium aquarium = new Aquarium();
 
-        System.out.println("Adding fish:");
+        System.out.println("==============================================");
+        System.out.println("        FISH AQUARIUM (STACK / LIFO)");
+        System.out.println("==============================================");
+
+        // Step 1: add the fish
+        // The for loop walks through each position in the array.
+        System.out.println();
+        System.out.println("STEP 1: ADDING FISH");
+        System.out.println("----------------------------------------------");
         for (int i = 0; i < fishes.length; i++) {
             aquarium.addFish(fishes[i]);
-            System.out.println("  added " + fishes[i]);
+            System.out.println("Added #" + (i + 1) + " : " + fishes[i]);
         }
 
-        // Add every fish in the array to the aquarium.
-        // The for loop walks through each position in the array.
-        // i starts at 0 and increases until it reaches fishes.length.
+        // Step 2: size and next fish
         System.out.println();
-        System.out.println("Aquarium size: " + aquarium.size());
-        System.out.println("Next fish to be removed: " + aquarium.nextFish());
+        System.out.println("STEP 2: AQUARIUM STATUS");
+        System.out.println("----------------------------------------------");
+        System.out.println("Total fish in aquarium : " + aquarium.size());
+        System.out.println("Next fish to remove    : " + aquarium.nextFish());
 
-        // Fish will remove one by one until the aquarium is empty.
-        // A while loop keeps running as long as the condition is true.
-        // Here, we keep removing fish while the aquarium is not empty.
+        // Step 3: remove the fish one by one until the aquarium is empty.
+        // A while loop keeps running while the aquarium is not empty.
         System.out.println();
-        System.out.println("Removing fish one by one:");
+        System.out.println("STEP 3: REMOVING FISH (LAST IN, FIRST OUT)");
+        System.out.println("----------------------------------------------");
+        String order = "";
         int count = 1;
         while (!aquarium.isEmpty()) {
             Fish f = aquarium.undoFish();
-            System.out.println(count + ". " + f);
-            f.swim();        // each fish swims
-            f.blowBubbles(); // each fish makes bubbles
+            System.out.println("Removal " + count + " of 8 -> " + f);
+            f.swim();
+            f.blowBubbles();
+            System.out.println();
+
+            // keep the name for the summary at the end
+            String fishName = getName(f);
+            order = order + fishName;
+            if (!aquarium.isEmpty()) {
+                order = order + " -> ";
+            }
             count++;
         }
 
-        // Final check: after all fish are removed, the aquarium should be empty.
-        System.out.println();
+        // Step 4: final check and summary
+        System.out.println("STEP 4: SUMMARY");
+        System.out.println("----------------------------------------------");
+        System.out.println("Removal order : " + order);
         System.out.println("Aquarium empty? " + aquarium.isEmpty());
-        System.out.println("Aquarium size: " + aquarium.size());
+        System.out.println("Aquarium size : " + aquarium.size());
+        System.out.println("==============================================");
+    }
+
+    // Gets just the name out of the fish text, e.g. "Goldfish [name=Goldie, ...]" -> "Goldie".
+    // Done this way so the Fish interface does not need an extra method.
+    private static String getName(Fish f) {
+        String text = f.toString();
+        int start = text.indexOf("name=") + 5;
+        int end = text.indexOf(",", start);
+        return text.substring(start, end);
     }
 }
