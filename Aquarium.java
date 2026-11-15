@@ -24,8 +24,8 @@ public class Aquarium {
     }
 
     //  Removes and returns the fish that was added last.
-    //  return the removed fish
-    //  throws NoSuchElementException if the aquarium is empty
+    //  @return the removed fish
+    //  @throws NoSuchElementException if the aquarium is empty
     public Fish undoFish() {
         if (fishes.isEmpty()) {
             throw new NoSuchElementException("Aquarium is empty");
@@ -35,8 +35,8 @@ public class Aquarium {
 
 
     //  Returns the fish that will be removed next, without removing it.
-    //  return the fish on top
-    //  throws NoSuchElementException if the aquarium is empty
+    //  @return the fish on top
+    //  @throws NoSuchElementException if the aquarium is empty
     public Fish nextFish() {
         if (fishes.isEmpty()) {
             throw new NoSuchElementException("Aquarium is empty");
